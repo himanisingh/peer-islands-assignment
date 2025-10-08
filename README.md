@@ -1,7 +1,7 @@
 # PeerIslandsAssignment
 
 This project demonstrates a **Dynamic Form Generator** built with **Angular 19**, capable of rendering form fields based on a configurable JSON schema.
-It supports multiple field types, dynamic validation.
+It supports multiple field types, dynamic validatio & configurable field attributes.
 
 ## Features
 
