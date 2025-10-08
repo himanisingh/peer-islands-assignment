@@ -13,8 +13,8 @@ import { JsonPipe } from '@angular/common';
 })
 export class AppComponent {
   title = 'peer-islands-assignment';
- // formSchema: FormSchema = FORM_SCHEMA;
-  formSchema: FormSchema = EMPLOYEE_FORM_SCHEMA;
+  formSchema: FormSchema = FORM_SCHEMA;
+  // formSchema: FormSchema = EMPLOYEE_FORM_SCHEMA;
   formValue: any;
 
   onSubmit(value: any) {

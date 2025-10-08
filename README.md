@@ -38,6 +38,12 @@ npm run start or ng serve
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
+### 4. Generate dynamic form for JSON Schemas
+
+JSON schemas are stored in `schemas/form-schema.ts` file.
+* By default the form is rendering for the schema (FORM_SCHEMA)
+* Please comment line **16** & uncomment line **17** in file `app.component.ts` to check for other schema EMPLOYEE_FORM_SCHEMA
+
 ## Running unit tests
 
 To execute unit tests, use the following command:
@@ -118,5 +124,18 @@ export const FORM_SCHEMA: FormSchema = {
 ### Example Output
 
 When the above JSON schema is passed to the Dynamic Form component, it renders a form with the provided field configurations.
+
+-------------------------------------
+         User Registration
+-------------------------------------
+Full Name: [_____________________]
+Email: [_________________________]
+Gender: [ Male | Female | Other ]
+Date of Birth: [ 2025-10-08 ▼ ]
+[ ] Subscribe to Newsletter
+-------------------------------------
+            [ Submit ]
+-------------------------------------
+
 
 If the user leaves a required field empty or enters invalid data, the corresponding error message appears below the field.
