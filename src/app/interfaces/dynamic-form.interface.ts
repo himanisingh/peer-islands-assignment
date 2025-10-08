@@ -15,6 +15,7 @@ export interface FieldSchema {
     placeholder?: string;
     disabled?: boolean;
     hidden?: boolean;
+    readonly? : boolean;
 }
 
 export interface FormSchema {
