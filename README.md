@@ -125,17 +125,4 @@ export const FORM_SCHEMA: FormSchema = {
 
 When the above JSON schema is passed to the Dynamic Form component, it renders a form with the provided field configurations.
 
--------------------------------------
-         User Registration
--------------------------------------
-Full Name: [_____________________]
-Email: [_________________________]
-Gender: [ Male | Female | Other ]
-Date of Birth: [ 2025-10-08 ▼ ]
-[ ] Subscribe to Newsletter
--------------------------------------
-            [ Submit ]
--------------------------------------
-
-
 If the user leaves a required field empty or enters invalid data, the corresponding error message appears below the field.
