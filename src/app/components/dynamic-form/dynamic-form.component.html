@@ -1,0 +1,61 @@
+<div class="p-3">
+  @if(schema.title){
+  <h2 class="text-center mb-4">{{ schema.title }}</h2>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-fields mb-5">
+      @for(field of schema.fields; track $index) {
+      @if(!field?.hidden) {
+      <div class="form-row mb-3">
+        @if(field.type === 'text' || field.type === 'date') {
+        <label [for]="field.name" class="form-label">{{ field.label }} @if (field.required) {<span>*</span>}</label>
+        <input [type]="field.type === 'date' ? 'date' : 'text'" [formControlName]="field.name"
+          [placeholder]="field.placeholder || ''" class="form-control" />
+        }
+        @else if(field.type === 'dropdown' ) {
+
+        <label [for]="field.name" class="form-label">{{ field.label }}@if (field.required) {<span>*</span>}</label>
+        <select [formControlName]="field.name"  class="form-select">
+          <option value="">Select</option>
+          @for(option of field.options; track $index) {
+          <option [value]="option">{{option}}</option>
+          }
+        </select>
+        }
+        @else if(field.type === 'multiselect' ) {
+        <label class="form-label">{{ field.label }}@if (field.required) {<span>*</span>}</label>
+        <div class="multiselect-options">
+          @for(option of field.options; track $index) {
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox"  [checked]="!!form.get(field.name)?.value.includes(option)"
+              (change)="onMultiSelectChange(field, option, $event)">
+            <label class="form-check-label" [for]="option">{{option}}</label>
+          </div>
+          }
+        </div>
+        }
+        @else if(field.type === 'checkbox' ) {
+        <label [for]="field.name" class="form-check-label me-3">{{ field.label }}@if (field.required)
+          {<span>*</span>}</label>
+        <input class="form-check-input" type="checkbox" [formControlName]="field.name" >
+        }
+        @else if(field.type === 'textarea' ) {
+        <label [for]="field.name" class="form-label">{{ field.label }}@if (field.required) {<span>*</span>}</label>
+        <textarea [formControlName]="field.name"  
+        [placeholder]="field.placeholder" class="form-control"></textarea>
+        }
+        @if(isFieldInvalid(field)) {
+        <div class="text-danger">{{getErrorMessage(field)}}</div>
+        }
+      </div>
+      }
+      }
+    </div>
+    <div class="form-actions text-center">
+      <button type="button" class="btn btn-secondary me-3" (click)="resetForm()">Reset</button>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+
+</div>
